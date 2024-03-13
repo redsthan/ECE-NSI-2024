@@ -1,3 +1,8 @@
+maximum_tableau = max
+
+assert(maximum_tableau([98, 12, 104, 23, 131, 9]) == 131)
+assert(maximum_tableau([-27, 24, -3, 15]) == 24)
+
 class Pile:
     """Classe définissant une structure de pile."""
     def __init__(self):
@@ -24,13 +29,16 @@ def bon_parenthesage(ch):
     est bien parenthésée"""
     p = Pile()
     for c in ch:
-        if c == ...: 
+        if c == '(': 
             p.empiler(c)
-        elif c == ...: 
+        elif c == ')': 
             if p.est_vide():
-                ...
+                return False
             else:
-                ...
-    return ... 
+                p.depiler()
+    return True if p.est_vide() else False
 
+assert bon_parenthesage("((()())(()))")
+assert not bon_parenthesage("())(()")
+assert not bon_parenthesage("(())(()")
 
