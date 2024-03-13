@@ -1,3 +1,14 @@
+def moyenne(notes):
+    num = sum([n*c for n, c in notes])
+    den = sum([c for n, c in notes])
+    if den == 0:
+        return None
+    return num / den
+
+assert moyenne([(8, 2), (12, 0), (13.5, 1), (5, 0.5)]) == 9.142857142857142
+assert moyenne([(3, 0), (5, 0)]) is None
+
+
 coeur = [[0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0],
          [0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0],
          [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0],
@@ -25,10 +36,10 @@ def affiche(dessin):
 def liste_zoom(liste_depart,k):
     '''renvoie une liste contenant k fois chaque élément de
        liste_depart'''
-    liste_zoomee = ... 
-    for elt in ... : 
+    liste_zoomee = []
+    for elt in liste_depart : 
         for i in range(k):
-            ...
+            liste_zoomee.append(elt)
     return liste_zoomee
 
 def dessin_zoom(grille,k):
@@ -36,9 +47,10 @@ def dessin_zoom(grille,k):
        ET répétées k fois'''
     grille_zoomee=[]
     for ligne in grille:
-        ligne_zoomee = ... 
+        ligne_zoomee = liste_zoom(ligne,k)
         for i in range(k):
-            ... .append(...) 
+            grille_zoomee.append(ligne_zoomee) 
     return grille_zoomee
 
 
+assert liste_zoom([1, 2, 3], 3) == [1, 1, 1, 2, 2, 2, 3, 3, 3]
