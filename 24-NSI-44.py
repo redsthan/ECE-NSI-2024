@@ -1,3 +1,16 @@
+def enumere(tab):
+    d = {}
+    for i, elem in enumerate(tab):
+        if elem in d:
+            d[elem].append(i)
+        else:
+            d[elem] = [i]
+    return d
+
+assert enumere([])=={}
+assert enumere([1, 2, 3])=={1: [0], 2: [1], 3: [2]}
+assert enumere([1, 1, 2, 3, 2, 1])=={1: [0, 1, 5], 2: [2, 4], 3: [3]}
+
 class Noeud:
     """Classe représentant un noeud d'un arbre binaire"""
     def __init__(self, etiquette, gauche, droit):
@@ -23,10 +36,20 @@ def insere(arbre, cle):
     if arbre == None:
         return Noeud(cle, None, None) # creation d'une feuille
     else:
-        if ...: 
+        if cle < arbre.etiquette: 
             arbre.gauche = insere(arbre.gauche, cle)
         else:
-            arbre.droit = ... 
+            arbre.droit = insere(arbre.droit, cle) 
         return arbre
 
+a = Noeud(5, Noeud(2, None, Noeud(3, None, None)), Noeud(7, None, None))
+assert parcours(a, [])==[2, 3, 5, 7]
+a = insere(a, 1)
+assert parcours(a, [])==[1, 2, 3, 5, 7]
+a = insere(a, 4)
+assert parcours(a, [])==[1, 2, 3, 4, 5, 7]
+a = insere(a, 6)
+assert parcours(a, [])==[1, 2, 3, 4, 5, 6, 7]
+a = insere(a, 8)
+assert parcours(a, [])==[1, 2, 3, 4, 5, 6, 7, 8]
 
